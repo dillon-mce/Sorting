@@ -31,14 +31,26 @@ def merge_sort( arr ):
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
     # TO-DO
-
+    while start < end:
+        if arr[start] < arr[mid]:
+            start += 1
+        else:
+            smallest = arr.pop(mid)
+            arr.insert(start, smallest)
+            start += 1
+            mid = mid + 1 if mid < end else mid
+    
     return arr
 
 def merge_sort_in_place(arr, l, r): 
     # TO-DO
-
+    if r <= l:
+        return arr
+    midpoint = (l + r)//2 + 1
+    merge_sort_in_place(arr, l, midpoint-1)
+    merge_sort_in_place(arr, midpoint, r)
+    arr = merge_in_place(arr, l, midpoint, r)
     return arr
-
 
 # STRETCH: implement the Timsort function below
 # hint: check out https://github.com/python/cpython/blob/master/Objects/listsort.txt
