@@ -28,8 +28,7 @@ def bubble_sort( arr ):
             second = arr[i+1]
 
             if first > second:
-                arr[i] = second
-                arr[i+1] = first
+                arr[i], arr[i+1] = second, first
                 swaps = True
 
     return arr
